@@ -1,0 +1,9 @@
+.example-card {
+  max-width: 17em;
+  margin: 4em 4em;
+}
+
+.example-header-image {
+  background-image: url('https://flagcdn.com/w320/tr.png');
+  background-size: cover;
+}
