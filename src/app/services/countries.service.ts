@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 import { Country } from '../interfaces/api';
 
@@ -9,18 +10,19 @@ import { Country } from '../interfaces/api';
   providedIn: 'root',
 })
 export class CountriesService {
-  readonly BASE_URL = 'https://restcountries.com/v3.1';
-
   constructor(private http: HttpClient) {}
 
   getAllCountries(): Observable<Country[]> {
-    return this.http.get<Country[]>(`${this.BASE_URL}/all`);
+    return this.http.get<Country[]>(`${environment.BASE_URL}/all`);
   }
 
-  getCountry(name: string): Observable<Country[]> {
+  getCountry(name: string): Observable<any> {
     return this.http
-      .get<Country[]>(`${this.BASE_URL}/name/${name}`)
-      .pipe(catchError(this.handleError<Country[]>(`getCountry name=${name}`)));
+      .get<Country[]>(`${environment.BASE_URL}/name/${name}`)
+      .pipe(
+        map(([res]) => res),
+        catchError(this.handleError<Country[]>(`getCountry name=${name}`))
+      );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

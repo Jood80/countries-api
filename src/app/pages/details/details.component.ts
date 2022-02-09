@@ -28,7 +28,7 @@ export class DetailsComponent implements OnInit {
     if (name) {
       this.countryService
         .getCountry(name)
-        .subscribe((country) => (this.countryDetails = country[0]));
+        .subscribe((country) => (this.countryDetails = country));
     }
   }
 
