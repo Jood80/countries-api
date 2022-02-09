@@ -15,7 +15,7 @@ export interface Country {
   region: string;
   subregion: string;
   languages: Languages;
-  translations: Translations;
+  translations: { [key: string]: Translation };
   latlng: number[];
   landlocked: boolean;
   borders: string[];
@@ -29,35 +29,48 @@ export interface Country {
   car: Car;
   timezones: string[];
   continents: string[];
-  flags: Flags;
+  flags: CoatOfArms;
   coatOfArms: CoatOfArms;
   startOfWeek: string;
   capitalInfo: CapitalInfo;
   postalCode: PostalCode;
 }
 
-export interface Swe {
-  official: string;
-  common: string;
+export interface CapitalInfo {
+  latlng: number[];
 }
 
-export interface NativeName {
-  swe: Swe;
+export interface Car {
+  signs: string[];
+  side: string;
 }
 
-export interface Name {
-  common: string;
-  official: string;
-  nativeName: NativeName;
+export interface CoatOfArms {
+  png: string;
+  svg: string;
 }
 
-export interface SEK {
+export interface Currencies {
+  EUR: Eur;
+}
+
+export interface Eur {
   name: string;
   symbol: string;
 }
 
-export interface Currencies {
-  SEK: SEK;
+export interface Demonyms {
+  eng: Eng;
+  fra: Eng;
+}
+
+export interface Eng {
+  f: string;
+  m: string;
+}
+
+export interface Gini {
+  '2016': number;
 }
 
 export interface Idd {
@@ -66,157 +79,7 @@ export interface Idd {
 }
 
 export interface Languages {
-  swe: string;
-}
-
-export interface Ara {
-  official: string;
-  common: string;
-}
-
-export interface Ces {
-  official: string;
-  common: string;
-}
-
-export interface Cym {
-  official: string;
-  common: string;
-}
-
-export interface Deu {
-  official: string;
-  common: string;
-}
-
-export interface Est {
-  official: string;
-  common: string;
-}
-
-export interface Fin {
-  official: string;
-  common: string;
-}
-
-export interface Fra {
-  official: string;
-  common: string;
-}
-
-export interface Hrv {
-  official: string;
-  common: string;
-}
-
-export interface Hun {
-  official: string;
-  common: string;
-}
-
-export interface Ita {
-  official: string;
-  common: string;
-}
-
-export interface Jpn {
-  official: string;
-  common: string;
-}
-
-export interface Kor {
-  official: string;
-  common: string;
-}
-
-export interface Nld {
-  official: string;
-  common: string;
-}
-
-export interface Per {
-  official: string;
-  common: string;
-}
-
-export interface Pol {
-  official: string;
-  common: string;
-}
-
-export interface Por {
-  official: string;
-  common: string;
-}
-
-export interface Rus {
-  official: string;
-  common: string;
-}
-
-export interface Slk {
-  official: string;
-  common: string;
-}
-
-export interface Spa {
-  official: string;
-  common: string;
-}
-
-export interface Swe2 {
-  official: string;
-  common: string;
-}
-
-export interface Urd {
-  official: string;
-  common: string;
-}
-
-export interface Zho {
-  official: string;
-  common: string;
-}
-
-export interface Translations {
-  ara: Ara;
-  ces: Ces;
-  cym: Cym;
-  deu: Deu;
-  est: Est;
-  fin: Fin;
-  fra: Fra;
-  hrv: Hrv;
-  hun: Hun;
-  ita: Ita;
-  jpn: Jpn;
-  kor: Kor;
-  nld: Nld;
-  per: Per;
-  pol: Pol;
-  por: Por;
-  rus: Rus;
-  slk: Slk;
-  spa: Spa;
-  swe: Swe2;
-  urd: Urd;
-  zho: Zho;
-}
-
-export interface Eng {
-  f: string;
-  m: string;
-}
-
-export interface Fra2 {
-  f: string;
-  m: string;
-}
-
-export interface Demonyms {
-  eng: Eng;
-  fra: Fra2;
+  deu: string;
 }
 
 export interface Maps {
@@ -224,27 +87,19 @@ export interface Maps {
   openStreetMaps: string;
 }
 
-export interface Gini {
-  2018: number;
+export interface Name {
+  common: string;
+  official: string;
+  nativeName: NativeName;
 }
 
-export interface Car {
-  signs: string[];
-  side: string;
+export interface NativeName {
+  deu: Translation;
 }
 
-export interface Flags {
-  png: string;
-  svg: string;
-}
-
-export interface CoatOfArms {
-  png: string;
-  svg: string;
-}
-
-export interface CapitalInfo {
-  latlng: number[];
+export interface Translation {
+  official: string;
+  common: string;
 }
 
 export interface PostalCode {
