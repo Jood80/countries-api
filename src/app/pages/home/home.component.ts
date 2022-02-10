@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   private rawCountries: Country[] = [];
   isLoading: boolean = true;
   searchFilter?: string;
+  regionFilter?: string;
+  regionOptions = ['Asia', 'Africa', 'America', 'Europe', 'Oceania'];
 
   constructor(private countryService: CountriesService) {}
 
@@ -28,13 +30,19 @@ export class HomeComponent implements OnInit {
 
   get countries() {
     return this.rawCountries
-      ? this.rawCountries.filter((country) =>
-          this.searchFilter
-            ? country.name.common
-                .toLowerCase()
-                .includes(this.searchFilter.toLowerCase())
-            : country
-        )
+      ? this.rawCountries
+          .filter((country) =>
+            this.searchFilter
+              ? country.name.common
+                  .toLowerCase()
+                  .includes(this.searchFilter.toLowerCase())
+              : country
+          )
+          .filter((country) =>
+            this.regionFilter
+              ? country.region.includes(this.regionFilter)
+              : country
+          )
       : this.rawCountries;
   }
 }
