@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Country } from 'src/app/interfaces/api';
 import { CountriesService } from 'src/app/services/countries.service';
 
@@ -8,7 +9,9 @@ import { CountriesService } from 'src/app/services/countries.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  countries: Country[] = [];
+  private rawCountries: Country[] = [];
+  isLoading: boolean = true;
+  searchFilter?: string;
 
   constructor(private countryService: CountriesService) {}
 
@@ -17,8 +20,21 @@ export class HomeComponent implements OnInit {
   }
 
   getAllCountries(): void {
-    this.countryService
-      .getAllCountries()
-      .subscribe((res) => (this.countries = res));
+    this.countryService.getAllCountries().subscribe((res) => {
+      this.rawCountries = res;
+      this.isLoading = false;
+    });
+  }
+
+  get countries() {
+    return this.rawCountries
+      ? this.rawCountries.filter((country) =>
+          this.searchFilter
+            ? country.name.common
+                .toLowerCase()
+                .includes(this.searchFilter.toLowerCase())
+            : country
+        )
+      : this.rawCountries;
   }
 }

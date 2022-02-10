@@ -1,6 +1,14 @@
+<div>
+  <input
+    type="search"
+    [(ngModel)]="searchFilter"
+    placeholder="Search for specific country"/>
+  </div>
+
 <div class="container">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
   <app-country-card
-  *ngFor="let country of countries"
-  [country]="country">
-</app-country-card>
+    *ngFor="let country of countries"
+    [country]="country">
+  </app-country-card>
 </div>
