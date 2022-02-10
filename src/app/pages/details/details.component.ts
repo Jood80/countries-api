@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Country } from 'src/app/interfaces/api';
 import { CountriesService } from 'src/app/services/countries.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -12,6 +13,7 @@ import { CountriesService } from 'src/app/services/countries.service';
 })
 export class DetailsComponent implements OnInit {
   countryDetails: Country;
+  borderCountries: Country[];
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +30,12 @@ export class DetailsComponent implements OnInit {
     if (name) {
       this.countryService
         .getCountry(name)
-        .subscribe((country) => (this.countryDetails = country));
+        .subscribe(
+          (country) => (
+            (this.countryDetails = country),
+            tap((country) => console.log(country))
+          )
+        );
     }
   }
 
