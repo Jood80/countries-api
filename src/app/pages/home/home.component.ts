@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Country } from 'src/app/models/api';
+import { Country } from 'src/app/models/country-api';
 import { CountriesService } from 'src/app/services/countries.service';
 
 @Component({

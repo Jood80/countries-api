@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
-import { Country } from '../interfaces/api';
+import { environment } from 'src/environments/environment';
+import { Country } from '../models/country-api';
 
 @Injectable({
   providedIn: 'root',

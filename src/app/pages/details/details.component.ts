@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
-import { Country } from 'src/app/interfaces/api';
-import { CountriesService } from 'src/app/services/countries.service';
 import { tap } from 'rxjs';
+
+import { Country } from 'src/app/models/country-api';
+import { CountriesService } from 'src/app/services/countries.service';
 
 @Component({
   selector: 'app-details',
