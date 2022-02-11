@@ -25,6 +25,12 @@ export class CountriesService {
       );
   }
 
+  getCountryBorder(codes: string[]): Observable<Country[]> {
+    return this.http.get<Country[]>(
+      `${environment.BASE_URL}/alpha?codes=${codes.join(',')}`
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);

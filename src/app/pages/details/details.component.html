@@ -26,8 +26,18 @@
             {{ countryDetails?.capital }}
           </p>
         </div>
-
-      
       </div>
-
+      
+      <button type="button" 
+       *ngIf="!borderCountries; else borders"
+      (click)="getBorderCountries(countryDetails.borders)"
+     >
+        Borders
+      </button>
+      <ng-template #borders>
+        <app-country-card       
+        *ngFor="let country of borderCountries"
+        [country]="country">
+      </app-country-card>  
+    </ng-template>   
 <button type="button" (click)="goBack()">Go Back</button>

@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { tap } from 'rxjs';
 
 import { Country } from 'src/app/models/country-api';
 import { CountriesService } from 'src/app/services/countries.service';
@@ -22,21 +21,22 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getCountry();
+    this.getCountryDetails();
   }
 
-  getCountry(): any {
+  getCountryDetails(): any {
     const name = this.route.snapshot.paramMap.get('name');
     if (name) {
       this.countryService
         .getCountry(name)
-        .subscribe(
-          (country) => (
-            (this.countryDetails = country),
-            tap((country) => console.log(country))
-          )
-        );
+        .subscribe((country) => (this.countryDetails = country));
     }
+  }
+
+  getBorderCountries(codes: string[]) {
+    this.countryService
+      .getCountryBorder(codes)
+      .subscribe((res) => (this.borderCountries = res));
   }
 
   goBack() {
