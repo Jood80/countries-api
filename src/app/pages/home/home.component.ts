@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Country } from 'src/app/interfaces/api';
+import { Country } from 'src/app/models/api';
 import { CountriesService } from 'src/app/services/countries.service';
 
 @Component({
@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   isLoading: boolean = true;
   searchFilter?: string;
   regionFilter?: string;
-  regionOptions = ['Asia', 'Africa', 'America', 'Europe', 'Oceania'];
 
   constructor(private countryService: CountriesService) {}
 
@@ -26,6 +25,10 @@ export class HomeComponent implements OnInit {
       this.rawCountries = res;
       this.isLoading = false;
     });
+  }
+
+  getSelectedRegion($event: string) {
+    this.regionFilter = $event;
   }
 
   get countries() {

@@ -6,13 +6,12 @@
     
   <app-dropdown
     placeholder="Filter by Region"
-    [regions]="regionOptions"
-    [region]="regionFilter"
+    (regionChange)="getSelectedRegion($event)"
   ></app-dropdown>
   </div>
 
 <div class="container">
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <mat-spinner *ngIf="isLoading" strokeWidth="4"></mat-spinner>
   <app-country-card
     *ngFor="let country of countries"
     [country]="country">

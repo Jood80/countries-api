@@ -6,9 +6,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./dropdown.component.css'],
 })
 export class DropdownComponent {
-  selected = '';
-  //TODO: fix the slow reposnse getting from here
-  @Input() regions: string[];
-  @Input() region?: string;
+  selectedRegion: string;
+  regions: string[] = ['Asia', 'Africa', 'America', 'Europe', 'Oceania'];
+
   @Output() regionChange: EventEmitter<string> = new EventEmitter();
 }

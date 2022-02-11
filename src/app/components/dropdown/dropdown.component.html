@@ -1,9 +1,7 @@
 <mat-form-field appearance="fill">
   <mat-label>Filter by region </mat-label>
-  <mat-select [(value)]="selected" (click)="regionChange.emit(selected);$event.stopImmediatePropagation()">
+  <mat-select [(value)]="selectedRegion" (selectionChange)="regionChange.emit(selectedRegion)">
     <mat-option *ngFor="let region of regions" [value]="region" >{{region}}</mat-option>
-    
   </mat-select>
 </mat-form-field>
 
-<p>You selected: {{selected}}</p>
