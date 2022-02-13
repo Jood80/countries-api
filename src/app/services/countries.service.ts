@@ -27,7 +27,7 @@ export class CountriesService {
 
   getCountryBorder(codes: string[]): Observable<Country[]> {
     return this.http.get<Country[]>(
-      `${environment.BASE_URL}/alpha?codes=${codes.join(',')}`
+      `${environment.BASE_URL}/alpha?codes=${codes?.join(',')}`
     );
   }
 

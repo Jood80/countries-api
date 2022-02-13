@@ -1,8 +1,12 @@
-<div>
-  <input
-    type="search"
-    [(ngModel)]="searchFilter"
-    placeholder="Search for specific country"/>
+<div class="header">
+  <mat-form-field class="example-form-field" appearance="fill">
+  <mat-label>Search for country</mat-label>
+  <input matInput type="text" [(ngModel)]="searchFilter">
+  <button *ngIf="searchFilter" matSuffix mat-icon-button aria-label="Clear" (click)="searchFilter=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+ 
     
   <app-dropdown
     placeholder="Filter by Region"
