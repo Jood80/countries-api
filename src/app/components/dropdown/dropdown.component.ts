@@ -7,7 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class DropdownComponent {
   selectedRegion: string;
-  regions: string[] = ['Asia', 'Africa', 'America', 'Europe', 'Oceania'];
+  regions: string[] = ['All', 'Asia', 'Africa', 'America', 'Europe', 'Oceania'];
 
   @Output() regionChange: EventEmitter<string> = new EventEmitter();
 }

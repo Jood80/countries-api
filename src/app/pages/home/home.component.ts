@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
               : country
           )
           .filter((country) =>
-            this.regionFilter
+            this.regionFilter && this.regionFilter !== 'All'
               ? country.region.includes(this.regionFilter)
               : country
           )
